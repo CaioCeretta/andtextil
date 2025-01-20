@@ -11,6 +11,7 @@ export default function TableRow({
 		<tr className="odd:bg-white even:bg-gray-100">
 			{columns.map((_, colIndex) => {
 				const keys = Object.keys(spec)
+
 				const value = spec[keys[colIndex]] || '-'
 
 				return (

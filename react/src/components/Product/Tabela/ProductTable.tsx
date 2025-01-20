@@ -2,7 +2,7 @@ import { Product } from '@/shared/interfaces'
 import TableHeader from './TableHeader'
 import TableRow from './TableRow'
 
-export interface ProductProps {
+interface ProductProps {
 	product: Product
 }
 
@@ -38,36 +38,40 @@ const subCategoryColumns: Record<
 	1: {
 		1: [
 			'Tex',
-			'Resitência à Ruptura',
+			'Resistência à Ruptura',
 			'Filamento',
 			'Resistência à Temperatura',
 		],
 	},
 	2: {
 		1: [
-			'Tex',
-			'Resistência à Ruptura',
-			'Filamento',
-			'Resistência à Temperatura',
+			'Largura',
+			'Espessura',
+			'Gramatura',
+			'Comprimento',
+			'Temperatura de Trabalho',
 		],
 	},
 }
 
-export default function ProductTable(props: ProductProps) {
-	const { product } = props
-
+export default function ProductTable({
+	product,
+}: ProductProps) {
 	if (!product) {
-		throw new Error('Nenhum produto encontrado')
+		return <div>Nenhum produto encontrado</div>
 	}
 
-	//Determine the columns to be used
+	// Determina as colunas a serem usadas com base na categoria e subcategoria
 	const subColumns =
-		(product.subCategoryId &&
-			product.categoryId &&
-			subCategoryColumns[product.categoryId]?.[
-				product.subCategoryId
-			]) ||
-		[]
+		product.categoryId &&
+		product.subCategoryId &&
+		subCategoryColumns[product.categoryId]?.[
+			product.subCategoryId
+		]
+			? subCategoryColumns[product.categoryId][
+					product.subCategoryId
+				]
+			: []
 
 	const allColumns =
 		subColumns.length > 0
