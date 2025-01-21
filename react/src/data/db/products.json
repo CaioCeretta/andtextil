@@ -16,6 +16,45 @@
   "products": [
     {
       "id": 1,
+      "name": "Fio de Fibra Aramida Cardada",
+      "slug": "fio-fibra-aramida-cardada",
+      "categoryId": 1,
+      "subCategoryId": 1,
+      "description": {
+        "characteristics": [
+          "Boa resistência mecânica",
+          "Boa resistência térmica",
+          "Excelente absorção",
+          "Boa resistência a tração",
+          "Não condutivo",
+          "Antichama"
+        ],
+        "applications": [
+          "Isolamento de fios e cabos",
+          "Fabricação de gaxetas e cordões",
+          "Fabricação de Fitas e Tecidos"
+        ],
+        "specifications": [
+          {
+            "tex": 600,
+            "resistenciaRuptura": "16.3kgf",
+            "filamento": "1mm",
+            "resistenciaTemperatura": "Constante 280º - Controlado 450º"
+          },
+          {
+            "tex": 1000,
+            "resistenciaRuptura": "32.6kgf",
+            "filamento": "1.5mm",
+            "resistenciaTemperatura": "Constante 280º - Controlado 450º"
+          }
+        ]
+      },
+      "images": [
+        "https://andtextil.com.br/assets/imagens/produtos/fio-cardado.png"
+      ]
+    },
+    {
+      "id": 2,
       "name": "Linha para costura 100% aramida",
       "slug": "linha-costura-aramida",
       "categoryId": 1,
@@ -60,46 +99,7 @@
       ]
     },
     {
-      "id": 1,
-      "name": "Fio de Fibra Aramida Cardada",
-      "slug": "fio-fibra-aramida-cardada",
-      "categoryId": 1,
-      "subCategoryId": 1,
-      "description": {
-        "characteristics": [
-          "Boa resistência mecânica",
-          "Boa resistência térmica",
-          "Excelente absorção",
-          "Boa resistência a tração",
-          "Não condutivo",
-          "Antichama"
-        ],
-        "applications": [
-          "Isolamento de fios e cabos",
-          "Fabricação de gaxetas e cordões",
-          "Fabricação de Fitas e Tecidos"
-        ],
-        "specifications": [
-          {
-            "tex": 600,
-            "resistenciaRuptura": "16.3kgf",
-            "filamento": "1mm",
-            "resistenciaTemperatura": "Constante 280º - Controlado 450º"
-          },
-          {
-            "tex": 1000,
-            "resistenciaRuptura": "32.6kgf",
-            "filamento": "1.5mm",
-            "resistenciaTemperatura": "Constante 280º - Controlado 450º"
-          }
-        ]
-      },
-      "images": [
-        "https://andtextil.com.br/assets/imagens/produtos/fio-cardado.png"
-      ]
-    },
-    {
-      "id": 2,
+      "id": 3,
       "name": "Tecido de fibra de aramida filamento",
       "slug": "tecido-de-fibra-de-aramida-filamento",
       "categoryId": 2,
@@ -139,12 +139,11 @@
         ]
       },
       "images": [
-        "https:andtextil.com.br/assets/imagens/produtos/tecido-fibra-aramida-filamento.png",
-        "https:andtextil.com.br/assets/imagens/produtos/tecido-fibra-aramida-filamento.png"
+        "https://andtextil.com.br/assets/imagens/produtos/tecido-fibra-aramida-filamento.png"
       ]
     },
     {
-      "id": 3,
+      "id": 4,
       "slug": "tecido-fibra-aramida-cardado",
       "name": "Tecido de Fibra Aramida Cardado",
       "categoryId": 2,
@@ -189,7 +188,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "slug": "tecido-fibra-vidro-texturizado",
       "name": "Tecido de Fibra de Vidro Texturizado",
       "categoryId": 2,
@@ -231,7 +230,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "slug": "fita-aramida-cem-porcento-filamento",
       "name": "Fita de Aramida 100% Filamento",
       "categoryId": 3,
@@ -278,7 +277,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "slug": "fita-fibra-aramida-cardada",
       "name": "Fita de Fibra Aramida Cardada",
       "categoryId": 3,
@@ -316,7 +315,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "slug": "fita-fibra-vidro-texturizada",
       "name": "Fita Fibra de Vidro Texturizada",
       "subCategoryId": 0,

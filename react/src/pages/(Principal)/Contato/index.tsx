@@ -55,7 +55,7 @@ export const Contato = () => {
 	}
 
 	return (
-		<MaxWidthWrapper className="w-[70%]">
+		<MaxWidthWrapper className="sm: w-[100%]">
 			<div className="flex flex-col gap-5 px-20 w-full  items-center">
 				<h1 className="font-black text-3xl text-zinc-950 mb-10 text-center">
 					Formulário para Contato
@@ -65,7 +65,7 @@ export const Contato = () => {
 					onSubmit={handleSubmit(handleEnviarOrcamento)}
 					action="https://formsubmit.co/financeiro@andtextil.com.br"
 					method="POST"
-					className="flex flex-col gap-3 w-full max-w-[700px]" // max-width para controlar o tamanho
+					className="flex flex-col gap-3 lg:w-full w-[25rem]" // max-width para controlar o tamanho
 				>
 					<Input
 						type="text"

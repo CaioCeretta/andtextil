@@ -15,7 +15,11 @@ import useCategories from '@/data/hooks/useCategories'
 // }
 
 export default function ProductsNavDropdown() {
-	const { categories, selectCategory } = useCategories()
+	const {
+		categories,
+		selectCategory,
+		emptyCategorySelected,
+	} = useCategories()
 
 	// const navigate = useNavigate()
 
@@ -33,6 +37,7 @@ export default function ProductsNavDropdown() {
 				<DropdownMenuContent className="my-2 p-0 border-0 rounded-none text-sm md:text-md lg:text-lg">
 					<DropdownMenuItem className="text-justify text-sm md:text-md bg-main-yellow rounded-none">
 						<Link
+							onClick={emptyCategorySelected}
 							to={'/categorias'}
 							className="text-blue-text font-semibold text-sm md:text-md lg:text-lg p-0 m-0"
 						>

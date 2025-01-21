@@ -1,8 +1,3 @@
-export interface Category {
-	id: number
-	name: string
-}
-
 export interface SpecificationTecido {
 	espessura: string
 	gramatura: string
@@ -63,10 +58,16 @@ export interface Product {
 	images: string[]
 }
 
+export interface Category {
+	id: number
+	name: string
+}
+
 export interface CategoriesContextProps {
 	categories: Category[]
 	selectedCategory: number | null
 	selectCategory: (id: number) => void
+	emptyCategorySelected: () => void
 }
 
 export interface ProductsContextProps {

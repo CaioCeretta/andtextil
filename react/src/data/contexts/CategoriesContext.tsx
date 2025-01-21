@@ -36,8 +36,12 @@ export const CategoriesProvider = (props: any) => {
 		setCategories(data.categories)
 	}, [])
 
-	function selectCategory(categoryId: number | null): void {
+	function selectCategory(categoryId: number): void {
 		return setSelectedCategory(categoryId)
+	}
+
+	function emptyCategorySelected(): void {
+		setSelectedCategory(null)
 	}
 
 	const value = useMemo(
@@ -45,6 +49,7 @@ export const CategoriesProvider = (props: any) => {
 			categories,
 			selectedCategory,
 			selectCategory,
+			emptyCategorySelected,
 		}),
 		[categories, selectedCategory]
 	)

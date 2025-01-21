@@ -22,6 +22,7 @@ export const ProductsProvider = (props: any) => {
 							product.categoryId === selectedCategory
 					)
 				: data.products,
+
 		[selectedCategory]
 	)
 

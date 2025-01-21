@@ -1,11 +1,14 @@
 import useCategories from '@/data/hooks/useCategories'
 import useProducts from '@/data/hooks/useProducts'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import CategoryCard from './CategoryCard'
 
 export default function Categories() {
-	const { categories } = useCategories()
+	const { categories, emptyCategorySelected } =
+		useCategories()
 	const { products } = useProducts()
+
+	useEffect(() => emptyCategorySelected(), [])
 
 	const getFirstProductByCategory = useCallback(
 		(categoryId: number) => {
