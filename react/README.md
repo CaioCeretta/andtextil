@@ -1,2 +1,1 @@
-# Repository of Andtextil web page# andtext-legacy-react
-# andtex
+# Repositório do site www.andtextil.com.br
