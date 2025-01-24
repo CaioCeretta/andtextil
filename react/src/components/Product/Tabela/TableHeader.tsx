@@ -11,7 +11,7 @@ export default function TableHeader({
 				return (
 					<th
 						key={index}
-						className={`border border-gray-300 px-6 py-4 ${
+						className={`border border-gray-300 text-xs md:text-md px-3 lg:px-6 lg:py-4 ${
 							index === 0 ? 'rounded-tl-lg' : ''
 						} ${
 							index === columns.length - 1

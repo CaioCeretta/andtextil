@@ -14,12 +14,14 @@ const categoryColumns: Record<number, string[]> = {
 		'Alongamento',
 		'Resistência à Temperatura',
 		'Metros/Quilo',
+		'Composição',
 	],
 	2: [
 		'Espessura',
 		'Gramatura',
 		'Resistência à ruptura',
 		'Largura',
+		'Temperatura de Trabalho',
 		'Construção',
 	],
 	3: [
@@ -82,7 +84,7 @@ export default function ProductTable({
 		product.description.specifications || []
 
 	return (
-		<table className="table-auto border-collapse w-full text-left bg-white shadow-md rounded-lg overflow-hidden">
+		<table className="table-auto border-collapse text-left bg-white shadow-md rounded-lg overflow-hidden">
 			<TableHeader columns={allColumns} />
 			<tbody>
 				{specifications.length > 0 ? (

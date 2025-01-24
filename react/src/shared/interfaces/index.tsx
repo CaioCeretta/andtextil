@@ -3,6 +3,7 @@ export interface SpecificationTecido {
 	gramatura: string
 	resistenciaRuptura: string
 	largura: string
+	temperaturaTrabalho: string
 	construcao: string
 }
 
@@ -20,6 +21,7 @@ export interface SpecificationFio {
 	alongamento: string
 	resistenciaTemperatura: string
 	metrosQuilo: string
+	composicao: string
 }
 
 export interface SpecificationFioAramida {

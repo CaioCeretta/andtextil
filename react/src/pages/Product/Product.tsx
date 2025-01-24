@@ -91,7 +91,7 @@ const Produto: React.FC = () => {
 							<h2 className="font-bold text-xl mt-6 mb-4">
 								Especificações:
 							</h2>
-							<div className="w-[full flex items-center justify-center]">
+							<div>
 								<ProductTable product={product} />
 							</div>
 						</div>

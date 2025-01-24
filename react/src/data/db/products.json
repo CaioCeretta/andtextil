@@ -83,14 +83,16 @@
             "resistenciaRuptura": "5.5kgf",
             "alongamento": "4.1%",
             "resistenciaTemperatura": "400º",
-            "metrosQuilo": "11.000"
+            "metrosQuilo": "11.000",
+            "composicao": "Fiada"
           },
           {
             "tex": 110,
             "resistenciaRuptura": "24.9kgf",
             "alongamento": "3.4%",
             "resistenciaTemperatura": "400º",
-            "metrosQuilo": "9.000"
+            "metrosQuilo": "9.000",
+            "composicao": "Filamento"
           }
         ]
       },
@@ -127,6 +129,7 @@
             "gramatura": "0.412g/m²",
             "resistenciaRuptura": "403kg",
             "largura": "1.2mm",
+            "temperaturaTrabalho": "Contínuo: 300º - Controlado 400º",
             "construcao": "Tela"
           },
           {
@@ -134,6 +137,7 @@
             "gramatura": "0.600g/m²",
             "resistenciaRuptura": "806kg",
             "largura": "1.2mm",
+            "temperaturaTrabalho": "Contínuo: 300º - Controlado 400º",
             "construcao": "Tela"
           }
         ]
@@ -172,6 +176,7 @@
             "gramatura": "0.650g/m²",
             "resistenciaRuptura": "200.78kg",
             "largura": "1.2mm",
+            "temperaturaTrabalho": "Contínuo: 250º - Controlado 400º",
             "construcao": "Tela"
           },
           {
@@ -179,6 +184,7 @@
             "gramatura": "0.700g/m²",
             "resistenciaRuptura": "200.78kg",
             "largura": "1.2mm",
+            "temperaturaTrabalho": "Contínuo: 250º - Controlado 400º",
             "construcao": "Tela"
           }
         ]
