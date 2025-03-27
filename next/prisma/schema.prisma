@@ -13,26 +13,79 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Categories {
-  id   String @id @default(cuid())
-  name String @unique
+model Category {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  parentId Int?
+  parent   Category?  @relation("CategorySelfRelation", fields: [parentId], references: [id])
+  children Category[] @relation("CategorySelfRelation")
 
-  products Product[]
-}
+  products           Product[]
+  SpecificationField SpecificationField[]
 
-model Image {
-  id         String  @id @default(cuid())
-  url        String
-  product_id String
-  product    Product @relation(fields: [product_id], references: [id])
+  @@map("categories")
 }
 
 model Product {
-  id          String @id @default(cuid())
-  name        String
-  description String
+  id             String           @id @default(uuid())
+  name           String
+  slug           String
+  description    String
+  category_id    Int
+  category       Category         @relation(fields: [category_id], references: [id])
+  images         Image[]
+  Specification  Specification[]
+  Characteristic Characteristic[]
+  Application    Application[]
 
-  category_id String
-  category    Categories @relation(fields: [category_id], references: [id])
-  images      Image[]
+  @@map("products")
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@map("images")
+}
+
+model Specification {
+  id                   Int                @id @default(autoincrement())
+  product_id           String
+  product              Product            @relation(fields: [product_id], references: [id])
+  specificationFieldId Int
+  specificationField   SpecificationField @relation(fields: [specificationFieldId], references: [id])
+  value                String
+
+  @@map("specifications")
+}
+
+model SpecificationField {
+  id            Int             @id @default(autoincrement())
+  name          String
+  type          String // Tipo de dado da especificação (ex: string, number, etc.)
+  categoryId    Int
+  category      Category        @relation(fields: [categoryId], references: [id])
+  Specification Specification[]
+
+  @@map("specificationFields")
+}
+
+model Characteristic {
+  id        Int      @id @default(autoincrement())
+  value     String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+
+  @@map("characteristics")
+}
+
+model Application {
+  id        Int      @id @default(autoincrement())
+  value     String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+
+  @@map("applications")
 }
