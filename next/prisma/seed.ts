@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -22,9 +21,9 @@ async function main() {
 			where: { name: 'fios aramida' },
 		})
 
-	const tecidosAramidaCategory =
+	const tecidosVidro =
 		await prisma.category.findFirst({
-			where: { name: 'tecidos aramida' },
+			where: { name: 'tecido fibra de vidro' },
 		})
 
 	// Buscando specificationField
@@ -55,7 +54,7 @@ async function main() {
 		})
 
 	// // Criação dos produtos
-	// const fioAramidaCardada = await prisma.product.create({
+	// const fioA1= await prisma.product.create({
 	// 	data: {
 	// 		name: 'Fio de Fibra Aramida Cardada',
 	// 		description: '',
@@ -110,7 +109,7 @@ async function main() {
 	// 	'Produto "Fio de Fibra Aramida Cardada" inserido com sucesso!'
 	// )
 
-	// const linhaCosturaAramida = await prisma.product.create({
+	// const fios1 = await prisma.product.create({
 	// 	data: {
 	// 		name: 'Linha para costura 100% aramida',
 	// 		description: '',
@@ -229,92 +228,460 @@ async function main() {
 	// 		},
 	// 	})
 
-	const TecidoFibraAramidaFialemtno =
-		await prisma.product.create({
-			data: {
-				name: 'Tecido de Fibra Aramida Cardado',
-				description: '',
-				slug: 'tecido-fibra-aramida-cardado',
-				category_id: tecidosAramidaCategory!.id,
-				Characteristic: {
-					create: [
-						{
-							value:
-								'Material isento de poliéster / algodão',
-						},
-						{
-							value:
-								'Isento de tratamento antichama, podendo ser lavado ou molhado sem prejuizo tecnico',
-						},
-						{
-							value:
-								'Excelentes propriedades de isolação térmica;',
-						},
-						{ value: 'Alta resistência à ruptura' },
-						{ value: 'Alta resistência ao corte' },
-						{
-							value:
-								'Resistência à chama direta e a respingos de solda',
-						},
-						{ value: 'Alta resistência à abrasão' },
-						{ value: 'Excelente maleabilidade' },
-						{
-							value:
-								'Compatível com silicones, colas diversas e tintas isolantes.',
-						},
-					],
-				},
-				Application: {
-					create: [
-						{
-							value: 'Equipamentos de proteção individual',
-						},
-						{ value: 'Cabines e cortinas para solda' },
-						{ value: 'Proteções térmicas' },
-						{ value: 'Juntas de expansão' },
-						{
-							value:
-								'Isolamento para pisos e salas de forno',
-						},
-					],
-				},
-				Specification: {
-					create: [
-						{ specificationFieldId: 17, value: '1.4mm' },
-						{
-							specificationFieldId: 18,
-							value: '0.650g/m²',
-						},
-						{ specificationFieldId: 26, value: '200.78kg' },
-						{ specificationFieldId: 16, value: '1.2mm' },
-						{
-							specificationFieldId: 20,
-							value: 'Contínuo: 250 - Controlado 400º',
-						},
-						{ specificationFieldId: 27, value: 'Tela' },
-						{ specificationFieldId: 17, value: '1.7mm' },
-						{
-							specificationFieldId: 18,
-							value: '0.700g/m²',
-						},
-						{ specificationFieldId: 26, value: '200.78kg' },
-						{ specificationFieldId: 16, value: '1.2mm' },
-						{
-							specificationFieldId: 20,
-							value: 'Contínuo: 250 - Controlado 400º',
-						},
-						{ specificationFieldId: 27, value: 'Tela' },
-					],
-				},
-				images: {
-					create: [
-						{
-							url: 'https://andtextil.com.br/assets/imagens/produtos/tecido-fibra-aramida-cardado.png',
-						},
-					],
-				},
+	// const Tecido1 =
+	// 	await prisma.product.create({
+	// 		data: {
+	// 			name: 'Tecido de Fibra Aramida Cardado',
+	// 			description: '',
+	// 			slug: 'tecido-fibra-aramida-cardado',
+	// 			category_id: tecidosAramidaCategory!.id,
+	// 			Characteristic: {
+	// 				create: [
+	// 					{
+	// 						value:
+	// 							'Material isento de poliéster / algodão',
+	// 					},
+	// 					{
+	// 						value:
+	// 							'Isento de tratamento antichama, podendo ser lavado ou molhado sem prejuizo tecnico',
+	// 					},
+	// 					{
+	// 						value:
+	// 							'Excelentes propriedades de isolação térmica;',
+	// 					},
+	// 					{ value: 'Alta resistência à ruptura' },
+	// 					{ value: 'Alta resistência ao corte' },
+	// 					{
+	// 						value:
+	// 							'Resistência à chama direta e a respingos de solda',
+	// 					},
+	// 					{ value: 'Alta resistência à abrasão' },
+	// 					{ value: 'Excelente maleabilidade' },
+	// 					{
+	// 						value:
+	// 							'Compatível com silicones, colas diversas e tintas isolantes.',
+	// 					},
+	// 				],
+	// 			},
+	// 			Application: {
+	// 				create: [
+	// 					{
+	// 						value: 'Equipamentos de proteção individual',
+	// 					},
+	// 					{ value: 'Cabines e cortinas para solda' },
+	// 					{ value: 'Proteções térmicas' },
+	// 					{ value: 'Juntas de expansão' },
+	// 					{
+	// 						value:
+	// 							'Isolamento para pisos e salas de forno',
+	// 					},
+	// 				],
+	// 			},
+	// 			Specification: {
+	// 				create: [
+	// 					{ specificationFieldId: 17, value: '1.4mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '0.650g/m²',
+	// 					},
+	// 					{ specificationFieldId: 26, value: '200.78kg' },
+	// 					{ specificationFieldId: 16, value: '1.2mm' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 250 - Controlado 400º',
+	// 					},
+	// 					{ specificationFieldId: 27, value: 'Tela' },
+	// 					{ specificationFieldId: 17, value: '1.7mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '0.700g/m²',
+	// 					},
+	// 					{ specificationFieldId: 26, value: '200.78kg' },
+	// 					{ specificationFieldId: 16, value: '1.2mm' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 250 - Controlado 400º',
+	// 					},
+	// 					{ specificationFieldId: 27, value: 'Tela' },
+	// 				],
+	// 			},
+	// 			images: {
+	// 				create: [
+	// 					{
+	// 						url: 'https://andtextil.com.br/assets/imagens/produtos/tecido-fibra-aramida-cardado.png',
+	// 					},
+	// 				],
+	// 			},
+	// 		},
+	// 	})
+	// const TecidoFV1 =
+	// 	await prisma.product.create({
+	// 		data: {
+	// 			name: 'Tecido de Fibra de Vidro Texturizado',
+	// 			description: '',
+	// 			slug: 'tecido-fibra-vidro-texturizado',
+	// 			category_id: tecidosVidro!.id,
+	// 			Characteristic: {
+	// 				create: [
+	// 					{
+	// 						value:
+	// 						"Totalmente isentas de amianto ou outras fibras orgânicas",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Excelentes propriedades de isolação térmica",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Excelente maleabilidade",
+	// 					},
+	// 					{ value: 'Alta resistência à ruptura' },
+	// 					{ value: 'Alta resistência ao corte' },
+	// 					{
+	// 						value:
+	// 						"Compatibilidade com silicones, colas, tintas isolantes e resinas sintéticas em geral"
+	// 					},
+	// 				],
+	// 			},
+	// 			Application: {
+	// 				create: [
+	// 					{
+	// 						value: "Cortinas de solda",
+	// 					},
+	// 					{ value: "Proteções térmicas removíveis" },
+	// 					{ value: 'Juntas de expansão' },
+	// 					{ value: 'Proteções térmicas para maquinas e equipamentos' },
+	// 				],
+	// 			},
+	// 			Specification: {
+	// 				create: [
+	// 					{ specificationFieldId: 16, value: '1mm' },
+	// 					{ specificationFieldId: 17, value: '1.5mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '1kg/m²',
+	// 					},
+	// 					{ specificationFieldId: 19, value: '25m' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 500 - Controlado 550º',
+	// 					},
+	// 					{ specificationFieldId: 16, value: '1mm' },
+	// 					{ specificationFieldId: 17, value: '3.2mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '1.8kg/m²',
+	// 					},
+	// 					{ specificationFieldId: 19, value: '25m' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 500 - Controlado 550º',
+	// 					},
+	// 				],
+	// 			},
+	// 			images: {
+	// 				create: [
+	// 					{
+	// 						url: "https://andtextil.com.br/assets/imagens/produtos/tecido-fibra-de-vidro-texturizado.png",
+	// 					},
+	// 				],
+	// 			},
+	// 		},
+	// 	})
+	// const Fita2 =
+	// 	await prisma.product.create({
+	// 		data: {
+	// 			name: 'Fita de Aramida 100% Filamento',
+	// 			description: '',
+	// 			slug: 'fita-aramida-cem-porcento-filamento',
+	// 			category_id: fitasCategory!.id,
+	// 			Characteristic: {
+	// 				create: [
+	// 					{
+	// 						value:
+	// 						"Produzidas com fio 100% aramida filamento;",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Alta resistência à abrasão",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Alta resistência à elétrica",
+	// 					},
+	// 					{ value: 
+	// 						"Alta resistência ao mecânica",
+	// 					},
+	// 					{ value:
+	// 						"Baixo Alongamento",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Alto módulo",
+	// 					},
+	// 					{
+	// 						value: 
+	// 						"Alta estabilidade dimensional"
+
+	// 					}
+	// 				],
+	// 			},
+	// 			Application: {
+	// 				create: [
+	// 					{
+	// 						value: "Cortinas de solda",
+	// 					},
+	// 					{ value: "Proteções térmicas removíveis" },
+	// 					{ value: 'Juntas de expansão' },
+	// 					{ value: 'Proteções térmicas para maquinas e equipamentos' },
+	// 				],
+	// 			},
+	// 			Specification: {
+	// 				create: [
+	// 					{ specificationFieldId: 16, value: '1mm' },
+	// 					{ specificationFieldId: 17, value: '1.5mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '1kg/m²',
+	// 					},
+	// 					{ specificationFieldId: 19, value: '25m' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 500 - Controlado 550º',
+	// 					},
+	// 					{ specificationFieldId: 16, value: '1mm' },
+	// 					{ specificationFieldId: 17, value: '3.2mm' },
+	// 					{
+	// 						specificationFieldId: 18,
+	// 						value: '1.8kg/m²',
+	// 					},
+	// 					{ specificationFieldId: 19, value: '25m' },
+	// 					{
+	// 						specificationFieldId: 20,
+	// 						value: 'Contínuo: 500 - Controlado 550º',
+	// 					},
+	// 				],
+	// 			},
+	// 			images: {
+	// 				create: [
+	// 					{
+	// 						url: "https://andtextil.com.br/assets/imagens/produtos/tecido-fibra-de-vidro-texturizado.png",
+	// 					},
+	// 				],
+	// 			},
+	// 		},
+	// 	})
+
+	// const Fita1 =
+	// 	await prisma.product.create({
+	// 		data: {
+	// 			name: 'Fita de Fibra Aramida Cardada',
+	// 			description: '',
+	// 			slug: 'fita-fibra-aramida-cardada',
+	// 			category_id: fitasCategory!.id,
+	// 			Characteristic: {
+	// 				create: [
+	// 					{
+	// 						value:
+	// 						"Excelente isolação elétrica",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Excelente isolação térmica",
+	// 					},
+	// 					{
+	// 						value:
+	// 						"Alta resistência a ruptura no urdume",
+	// 					},
+	// 					{ value: 
+	// 						"Alta resistência ao corte",
+	// 					},
+	// 					{ value:
+	// 						"Alta compatibilidade com adesivos, colas, silicones e tintas."
+	// 					},
+	// 				],
+	// 			},
+	// 			Application: {
+	// 				create: [
+	// 					{
+	// 						value: "Isolamento de óleos e fluidos térmicos",
+
+	// 					},
+	// 					{ value: "Sistemas de ar frio e quente, cabos elétricos, escapamentos automotivos"
+	// 					},
+	// 				],
+	// 			},
+	// 			Specification: {
+	// 				create: [
+	// 					{ specificationFieldId: 21, value: '1.7mm' },
+	// 					{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+	// 					{
+	// 						specificationFieldId: 23,
+	// 						value: '97.8kgf',
+	// 					},
+	// 					{ specificationFieldId: 24, value: 'Contínuo 280º - Controlado 400º' },
+	// 					{ specificationFieldId: 21, value: '3.0mm' },
+	// 					{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+	// 					{
+	// 						specificationFieldId: 23,
+	// 						value: '195.6kgf',
+	// 					},
+	// 					{ specificationFieldId: 24, value: 'Contínuo 280º - Controlado 400º' },
+	// 				],
+	// 			},
+	// 			images: {
+	// 				create: [
+	// 					{
+	// 						url: "https://andtextil.com.br/assets/imagens/produtos/fita-aramida-cardada.png"
+	// 					},
+	// 				],
+	// 			},
+	// 		},
+	// 	})
+
+	// const Fita3 =
+	// await prisma.product.create({
+	// 	data: {
+  //     name: "Fita Fibra de Vidro Texturizada",
+	// 		description: '',
+  //     slug: "fita-fibra-vidro-texturizada",
+	// 		category_id: fitasCategory!.id,
+	// 		Characteristic: {
+	// 			create: [
+	// 				{
+	// 					value:
+	// 					"Totalmente isentas de amianto ou outras fibras sintéticas",
+	// 				},
+	// 				{
+	// 					value:
+	// 					"Excelentes propriedades de isolamento térmico;",
+	// 				},
+	// 				{
+	// 					value:
+	// 					"Excelente maleabilidade",
+	// 				},
+	// 				{ value: 
+	// 					"Compatibilidade com silicones, colas e tintas isolantes",
+	// 				},
+	// 				{ value:
+	// 					"Excelente compatibilidade com elastômeros sintéticos e naturais"
+	// 				},
+	// 			],
+	// 		},
+	// 		Application: {
+	// 			create: [
+	// 				{
+	// 					value: "Isolamento térmico de tubulações, mangueiras, dutos  de escapamentos automotivos, tubulações de ar condicionado e vedação calhas",
+
+	// 				},
+	// 			]
+	// 		},
+	// 		Specification: {
+	// 			create: [
+	// 				{ specificationFieldId: 21, value: '1.1mm' },
+	// 				{ specificationFieldId: 22, value: '25, 38, 50, 75, 120mm' },
+	// 				{
+	// 					specificationFieldId: 23,
+	// 					value: '244.2kgf',
+	// 				},
+	// 				{ specificationFieldId: 24, value: 'Estático: 500º - Dinâmico 260º' },
+	// 				{ specificationFieldId: 21, value: '2.0mm' },
+	// 				{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+	// 				{
+	// 					specificationFieldId: 23,
+	// 					value: '244.2kgf',
+	// 				},
+	// 				{ specificationFieldId: 24, value: 'Estático: 500º - Dinamico 200º' },
+	// 				{ specificationFieldId: 21, value: '3.0mm' },
+	// 				{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+	// 				{
+	// 					specificationFieldId: 23,
+	// 					value: '488.4kgf',
+	// 				},
+	// 				{ specificationFieldId: 24, value: 'Estático: 500º - Dinâmico 260º' },
+	// 			],
+	// 		},
+	// 		images: {
+	// 			create: [
+	// 				{
+	// 					url: "https://andtextil.com.br/assets/imagens/produtos/fita-aramida-cardada.png"
+	// 				},
+	// 			],
+	// 		},
+	// 	},
+	// })
+
+	const Fita3 =
+	await prisma.product.create({
+		data: {
+      name: "Fita Fibra de Vidro Texturizada",
+			description: '',
+      slug: "fita-fibra-vidro-texturizada",
+			category_id: fitasCategory!.id,
+			Characteristic: {
+				create: [
+					{
+						value:
+						"Totalmente isentas de amianto ou outras fibras sintéticas",
+					},
+					{
+						value:
+						"Excelentes propriedades de isolamento térmico;",
+					},
+					{
+						value:
+						"Excelente maleabilidade",
+					},
+					{ value: 
+						"Compatibilidade com silicones, colas e tintas isolantes",
+					},
+					{ value:
+						"Excelente compatibilidade com elastômeros sintéticos e naturais"
+					},
+				],
 			},
-		})
+			Application: {
+				create: [
+					{
+						value: "Isolamento térmico de tubulações, mangueiras, dutos  de escapamentos automotivos, tubulações de ar condicionado e vedação calhas",
+
+					},
+				]
+			},
+			Specification: {
+				create: [
+					{ specificationFieldId: 21, value: '1.1mm' },
+					{ specificationFieldId: 22, value: '25, 38, 50, 75, 120mm' },
+					{
+						specificationFieldId: 23,
+						value: '244.2kgf',
+					},
+					{ specificationFieldId: 24, value: 'Estático: 500º - Dinâmico 260º' },
+					{ specificationFieldId: 21, value: '2.0mm' },
+					{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+					{
+						specificationFieldId: 23,
+						value: '244.2kgf',
+					},
+					{ specificationFieldId: 24, value: 'Estático: 500º - Dinamico 200º' },
+					{ specificationFieldId: 21, value: '3.0mm' },
+					{ specificationFieldId: 22, value: '25, 38, 50, 75, 100mm' },
+					{
+						specificationFieldId: 23,
+						value: '488.4kgf',
+					},
+					{ specificationFieldId: 24, value: 'Estático: 500º - Dinâmico 260º' },
+				],
+			},
+			images: {
+				create: [
+					{
+						url: "https://andtextil.com.br/assets/imagens/produtos/fita-aramida-cardada.png"
+					},
+				],
+			},
+		},
+	})
 
 	// // Criação dos campos de especificação
 	// await prisma.specificationField.createMany({
