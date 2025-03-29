@@ -1,16 +1,8 @@
-import {
-	createContext,
-	useState,
-	useEffect,
-	useMemo,
-} from 'react'
+'use client'
 
-import {
-	Category,
-	CategoriesContextProps,
-} from '../../shared/interfaces'
+import { createContext, useState, useEffect, useMemo } from 'react'
 
-import data from '../db/products.json' // Importando o JSON localmente
+import { CategoryType, CategoriesContextProps } from '../../shared/interfaces'
 
 // interface DataFormat {
 // 	categories: Category[]
@@ -20,38 +12,41 @@ import data from '../db/products.json' // Importando o JSON localmente
 // const dataTyped: DataFormat = data as DataFormat
 
 // Criação dos contextos
-export const CategoriesContext =
-	createContext<CategoriesContextProps>({} as any)
+export const CategoriesContext = createContext<CategoriesContextProps>(
+  {} as any,
+)
 
 export const CategoriesProvider = (props: any) => {
-	const [categories, setCategories] = useState<Category[]>(
-		[]
-	)
-	const [selectedCategory, setSelectedCategory] = useState<
-		number | null
-	>(null)
+  const [categories, setCategories] = useState<CategoryType[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
 
-	//Busca Inicial das Categorys
-	useEffect(() => {
-		setCategories(data.categories)
-	}, [])
+  useEffect(() => {
+    async function fetchCategories() {
+      const res = await fetch('/api/categories')
+      const data = await res.json()
 
-	function selectCategory(categoryId: number | null): void {
-		return setSelectedCategory(categoryId)
-	}
+      setCategories(data)
+    }
 
-	const value = useMemo(
-		() => ({
-			categories,
-			selectedCategory,
-			selectCategory,
-		}),
-		[categories, selectedCategory]
-	)
+    fetchCategories()
+  })
 
-	return (
-		<CategoriesContext.Provider value={value}>
-			{props.children}
-		</CategoriesContext.Provider>
-	)
+  function selectCategory(categoryId: number): void {
+    return setSelectedCategory(categoryId)
+  }
+
+  const value = useMemo(
+    () => ({
+      categories,
+      selectedCategory,
+      selectCategory,
+    }),
+    [categories, selectedCategory],
+  )
+
+  return (
+    <CategoriesContext.Provider value={value}>
+      {props.children}
+    </CategoriesContext.Provider>
+  )
 }

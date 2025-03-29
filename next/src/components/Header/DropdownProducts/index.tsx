@@ -10,8 +10,9 @@ import {
 import Link from 'next/link'
 
 interface Category {
-  id: string
+  id: number
   name: string
+  parentId: number | null
 }
 
 interface ProductsNavDropdownProps {
