@@ -1,5 +1,7 @@
 import { db } from '@/db'
 
 export async function getCategories() {
-  await db.categories.findMany()
+  const categories = await db.category.findMany()
+
+  return categories
 }

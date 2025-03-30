@@ -3,23 +3,30 @@ import Produto from './produto'
 
 export interface PageProps {
   params: {
-    nome: string
+    slug: string
   }
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { nome } = params
+  const { slug } = params
 
   const product = await db.product.findFirst({
-    where: { name: nome },
+    where: { slug: slug },
     include: {
       category: true,
       images: true,
+      applications: true,
+      specifications: {
+        include: {
+          specificationField: true,
+        },
+      },
+      characteristics: true,
     },
   })
 
   if (!product) {
-    throw new Error('Produto não encontrado')
+    return <p className="text-center text-xl">Produto não encontrado</p>
   }
 
   return <>{product && <Produto product={product} />}</>

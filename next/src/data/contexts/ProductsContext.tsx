@@ -19,7 +19,7 @@ export const ProductsProvider = (props: any) => {
     }
 
     fetchProducts()
-  })
+  }, [])
 
   const filteredProducts = useMemo(
     () =>
@@ -31,12 +31,8 @@ export const ProductsProvider = (props: any) => {
     [selectedCategory, products],
   )
 
-  const value = useMemo(() => {
-    return { products: filteredProducts }
-  }, [filteredProducts])
-
   return (
-    <ProductsContext.Provider value={value}>
+    <ProductsContext.Provider value={{ products: filteredProducts }}>
       {props.children}
     </ProductsContext.Provider>
   )

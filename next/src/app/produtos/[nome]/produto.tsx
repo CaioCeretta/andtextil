@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button'
 import * as Dialog from '@/components/ui/dialog'
 
 import { formatProductName } from '@/lib/utils'
-import { Categories, Image as ImageType, Product } from '@prisma/client'
+import type { CategoryType, ProductType } from '@/shared/interfaces'
+import { Image as ImageType, Product } from '@prisma/client'
+import Image from 'next/image'
 
 type ProdutoProps = {
-  product: Product & { images: ImageType[]; category: Categories }
+  product: ProductType
 }
 
 export const Produto = ({ product }: ProdutoProps) => {
@@ -16,28 +18,25 @@ export const Produto = ({ product }: ProdutoProps) => {
   const productName = formatProductName(product.name)
 
   return (
-    <div className="max-w-[1480]  mb-10">
-      <div className="max-w-[1440] w-full h-[780px] m-auto py-16 px-8 relative group">
-        <ImageSlider images={product.images} />
-        <span className="mt-1 absolute bottom-3 block font-medium text-md text-yellow-800">
+    <div className="mb-10 max-w-[1480]">
+      <div className="group relative m-auto h-[780px] w-full max-w-[1440] px-8 py-16">
+        {product.images.length > 0 && (
+          <Image src={product.images[0].url} alt={product.name} />
+        )}
+        <span className="text-md absolute bottom-3 mt-1 block font-medium text-yellow-800">
           {formatProductName(product.category.name)}
         </span>
       </div>
-      <div className="flex flex-col items-center mt-2">
-        <h1 className="text-4xl font-bold text-blue-text mb-5">
+      <div className="mt-2 flex flex-col items-center">
+        <h1 className="mb-5 text-4xl font-bold text-blue-text">
           {productName}
         </h1>
-        <div className="flex-1">
-          <p className="mt-1 px-10 text-md leading-loose mb-10 text-yellow-950">
-            {product.description}
-          </p>
-        </div>
         <Dialog.Dialog>
           <Dialog.DialogTrigger asChild>
             <Button
               size={'lg'}
               type="button"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-medium w-[50%] flex mx-auto justify-center"
+              className="mx-auto flex w-[50%] justify-center bg-yellow-500 font-medium text-white hover:bg-yellow-600"
             >
               Solicitar Orçamento
             </Button>

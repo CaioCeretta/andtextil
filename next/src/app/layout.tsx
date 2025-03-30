@@ -1,6 +1,5 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import Providers from '@/components/Providers/Providers'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -30,9 +29,7 @@ export default function RootLayout({
           <ProductsProvider>
             <CategoriesProvider>
               <Header />
-              <main className="flex-1">
-                <Providers>{children}</Providers>
-              </main>
+              <main className="flex-1">{children}</main>
               <Footer />
             </CategoriesProvider>
           </ProductsProvider>

@@ -23,13 +23,16 @@ export const CategoriesProvider = (props: any) => {
   useEffect(() => {
     async function fetchCategories() {
       const res = await fetch('/api/categories')
+
       const data = await res.json()
+
+      console.log(data)
 
       setCategories(data)
     }
 
     fetchCategories()
-  })
+  }, [])
 
   function selectCategory(categoryId: number): void {
     return setSelectedCategory(categoryId)
