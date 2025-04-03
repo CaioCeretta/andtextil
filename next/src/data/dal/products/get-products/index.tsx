@@ -8,6 +8,7 @@ export const getProducts = async () => {
       category: true,
       applications: true,
       characteristics: true,
+      images: true,
       specifications: {
         include: {
           specificationField: true,
@@ -16,5 +17,22 @@ export const getProducts = async () => {
     },
   })
 
-  return products
+  const formattedProducts = products.map((product) => ({
+    ...product,
+    specifications: product.specifications.reduce<Record<string, string[]>>(
+      (acc, spec) => {
+        const fieldName = spec.specificationField.name
+        if (!acc[fieldName]) {
+          acc[fieldName] = [] // Initialize a new array for each key
+        }
+
+        acc[fieldName].push(spec.value)
+
+        return acc
+      },
+      {},
+    ),
+  }))
+
+  return formattedProducts
 }

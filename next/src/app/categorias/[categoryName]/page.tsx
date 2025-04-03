@@ -2,6 +2,7 @@ import { db } from '@/db'
 import ProductsByCategory from './ProductsByCategory'
 import { capitalizeString } from '@/lib/utils'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { productIncludes } from '@/shared/types'
 
 interface PageProps {
   params: {
@@ -12,15 +13,13 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
   const { categoryName } = params
 
-  const category = await db.categories.findUnique({
+  const category = await db.category.findUnique({
     where: {
       name: categoryName,
     },
     include: {
       products: {
-        include: {
-          images: true,
-        },
+        include: productIncludes,
       },
     },
   })
@@ -29,11 +28,9 @@ const Page = async ({ params }: PageProps) => {
     throw new Error(`Categoria com nome ${categoryName} não foi encontrada`)
   }
 
-  console.log(category)
-
   return (
     <MaxWidthWrapper className="mt-10">
-      <h1 className="mb-3 font-semibold text-2xl text-blue-text">
+      <h1 className="mb-3 text-2xl font-semibold text-blue-text">
         {capitalizeString(categoryName)}
       </h1>
       <div className="flex gap-5">
