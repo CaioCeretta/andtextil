@@ -135,6 +135,12 @@ async function main() {
           { specificationFieldId: 4, value: '400º' },
           { specificationFieldId: 5, value: '11.000' },
           { specificationFieldId: 6, value: 'Fiada' },
+          { specificationFieldId: 1, value: '110' },
+          { specificationFieldId: 2, value: '24.9kgf' },
+          { specificationFieldId: 3, value: '3.4%' },
+          { specificationFieldId: 4, value: '400º' },
+          { specificationFieldId: 5, value: '9.000' },
+          { specificationFieldId: 6, value: 'Filamento' },
         ],
       },
       images: {

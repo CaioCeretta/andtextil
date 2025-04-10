@@ -29,7 +29,7 @@ export default function RootLayout({
           <ProductsProvider>
             <CategoriesProvider>
               <Header />
-              <main className="flex-1">{children}</main>
+              <main className="mx-10 flex-1">{children}</main>
               <Footer />
             </CategoriesProvider>
           </ProductsProvider>

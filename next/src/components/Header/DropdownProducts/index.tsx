@@ -29,12 +29,12 @@ export default function ProductsNavDropdown({
       <DropdownMenu>
         <DropdownMenuTrigger>Produtos</DropdownMenuTrigger>
         <DropdownMenuContent className="p-5q">
-          <DropdownMenuItem className="text-justify border-b-2 border-gray-300 w-100 py-4">
+          <DropdownMenuItem className="w-100 border-b-2 border-gray-300 py-4 text-justify">
             <Link href="/categorias">Todos Produtos</Link>
           </DropdownMenuItem>
           {categories.map((category) => (
             <DropdownMenuItem
-              className="text-justify border-b-2 border-gray-300 w-100 py-4"
+              className="w-100 border-b-2 border-gray-300 py-4 text-justify"
               key={category.id}
             >
               <Link href={`/categorias/${category.name}`}>

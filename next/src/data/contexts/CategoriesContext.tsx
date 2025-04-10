@@ -12,8 +12,17 @@ import { CategoryType, CategoriesContextProps } from '../../shared/interfaces'
 // const dataTyped: DataFormat = data as DataFormat
 
 // Criação dos contextos
+
+const initialCategoriesContext: CategoriesContextProps = {
+  categories: [],
+  selectedCategory: null,
+  emptyCategorySelected: () => {},
+  getParentCategories: () => [],
+  selectCategory: () => {},
+}
+
 export const CategoriesContext = createContext<CategoriesContextProps>(
-  {} as any,
+  initialCategoriesContext,
 )
 
 export const CategoriesProvider = (props: any) => {
@@ -36,17 +45,24 @@ export const CategoriesProvider = (props: any) => {
     return setSelectedCategory(categoryId)
   }
 
-  const value = useMemo(
-    () => ({
-      categories,
-      selectedCategory,
-      selectCategory,
-    }),
-    [categories, selectedCategory],
-  )
+  function emptyCategorySelected(): void {
+    setSelectedCategory(null)
+  }
+
+  function getParentCategories() {
+    return categories.filter((category) => category.parentId == null)
+  }
 
   return (
-    <CategoriesContext.Provider value={value}>
+    <CategoriesContext.Provider
+      value={{
+        categories,
+        selectedCategory,
+        selectCategory,
+        emptyCategorySelected,
+        getParentCategories,
+      }}
+    >
       {props.children}
     </CategoriesContext.Provider>
   )

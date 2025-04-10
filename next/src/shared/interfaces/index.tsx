@@ -23,8 +23,10 @@ export type CategoryType = Prisma.CategoryGetPayload<{
 
 export interface CategoriesContextProps {
   categories: CategoryType[]
+  getParentCategories: () => CategoryType[]
   selectedCategory: number | null
   selectCategory: (id: number) => void
+  emptyCategorySelected: () => void
 }
 
 export interface ProductsContextProps {

@@ -40,13 +40,6 @@ const Produto: React.FC = () => {
         setCategoryName(category ? category.name : 'Categoria não encontrada')
       }
       setProduct(productData || null)
-
-      if (productData) {
-        const category = categories.find(
-          (cat: Category) => cat.id === productData.categoryId,
-        )
-        setCategoryName(category ? category.name : 'Unknown Category')
-      }
       setIsLoading(false)
     }
 
@@ -66,7 +59,7 @@ const Produto: React.FC = () => {
       <h1 className="my-4 hidden text-center text-2xl font-bold">
         {categoryName}
       </h1>
-      <div className="text-md mx-3 my-3 mt-2 grid grid-cols-1 lg:grid-cols-2 lg:items-center">
+      <div className="mx-3 my-3 mt-2 grid grid-cols-1 text-[14px] lg:grid-cols-2 lg:items-center">
         <div className="order-2 mx-auto flex w-full max-w-[20rem] flex-1 flex-col lg:order-1 lg:max-w-[30rem] xl:max-w-[40rem]">
           <div>
             <ProductDescription product={product} />
@@ -83,12 +76,13 @@ const Produto: React.FC = () => {
             <OrcamentoDialog product={product} />
           </div>
         </div>
-        <div className="relative order-1 mx-auto mb-5 aspect-square max-h-[40rem] overflow-hidden rounded-2xl shadow-md lg:order-2 lg:max-h-[50rem] lg:w-[90%]">
+        <div className="order-1 mx-auto mb-5 aspect-square max-h-[40rem] overflow-hidden rounded-2xl shadow-md lg:order-2 lg:max-h-[50rem] lg:w-[90%]">
           <Image
             className="h-full w-full bg-cover bg-center object-contain duration-500"
             src={product.images[0].url}
             alt={product.name}
-            fill
+            width={320}
+            height={320}
           />
         </div>
       </div>
