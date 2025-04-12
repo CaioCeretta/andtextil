@@ -20,15 +20,19 @@ const ProductsByCategory = ({ products }: ProductsByCategoryProps) => {
 
         return (
           <div key={product.id}>
-            <div className="flex flex-row items-center justify-center p-4">
+            <div className="">
               <Card className="w-full max-w-xs rounded-xl border">
-                <div className="grid gap-4 p-4">
-                  <div className="relative aspect-square h-72 overflow-hidden rounded-xl">
+                <div className="flex flex-col items-center gap-4 p-4">
+                  <div className="relative aspect-square min-h-72 w-full max-w-64 overflow-hidden rounded-xl">
                     <Image
-                      src={productImage}
-                      alt={product.name || 'Product image'}
-                      className="h-full rounded-md"
+                      src={product.images?.[0]?.url ?? '/placeholder.jpeg'}
+                      alt={product.name}
+                      style={{
+                        objectPosition: '50% 25%',
+                        backgroundSize: '50%',
+                      }}
                       fill
+                      className="rounded-md object-cover"
                     />
                   </div>
                   <div className="">

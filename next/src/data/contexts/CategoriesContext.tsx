@@ -14,7 +14,6 @@ import { CategoryType, CategoriesContextProps } from '../../shared/interfaces'
 // Criação dos contextos
 
 const initialCategoriesContext: CategoriesContextProps = {
-  categories: [],
   selectedCategory: null,
   emptyCategorySelected: () => {},
   getParentCategories: () => [],
@@ -56,7 +55,6 @@ export const CategoriesProvider = (props: any) => {
   return (
     <CategoriesContext.Provider
       value={{
-        categories,
         selectedCategory,
         selectCategory,
         emptyCategorySelected,

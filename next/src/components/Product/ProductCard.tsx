@@ -15,20 +15,15 @@ export default function ProductCard(props: ProductCardProps) {
 
   const { product } = props
 
-  const isTallImage = (product: ProductType) => {
-    const width = product.images?.[0]?.width
-    const height = product.images?.[0]?.height
-    return height > width // Se a imagem for mais alta que larga
-  }
-
   return (
     <div className="flex w-[90%] flex-col items-center gap-3 rounded-md border p-4 shadow-sm hover:shadow-md">
-      <div className="relative aspect-square max-h-72 w-full overflow-hidden rounded-xl">
+      <div className="relative aspect-square max-h-72 w-full max-w-64 overflow-hidden rounded-xl">
         <Image
           src={product.images?.[0]?.url ?? '/placeholder.jpeg'}
           alt={product.name}
+          style={{ objectPosition: '50% 25%' }}
           fill
-          className="rounded-md"
+          className="rounded-md object-cover"
         />
       </div>
 

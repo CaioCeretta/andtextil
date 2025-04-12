@@ -21,6 +21,13 @@ const Page = async ({ params }: PageProps) => {
       products: {
         include: productIncludes,
       },
+      children: {
+        include: {
+          products: {
+            include: productIncludes,
+          },
+        },
+      },
     },
   })
 
@@ -28,13 +35,18 @@ const Page = async ({ params }: PageProps) => {
     throw new Error(`Categoria com nome ${categoryName} não foi encontrada`)
   }
 
+  const allProducts = [
+    ...category.products,
+    ...category.children.flatMap((subcategory) => subcategory.products),
+  ]
+
   return (
     <MaxWidthWrapper className="mt-10">
       <h1 className="mb-3 text-2xl font-semibold text-blue-text">
         {capitalizeString(categoryName)}
       </h1>
       <div className="flex gap-5">
-        <ProductsByCategory products={category.products} />
+        <ProductsByCategory products={allProducts} />
       </div>
     </MaxWidthWrapper>
   )

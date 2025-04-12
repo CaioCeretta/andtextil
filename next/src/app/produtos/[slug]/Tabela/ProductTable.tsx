@@ -11,16 +11,28 @@ export default function ProductTable({ product }: ProductProps) {
     return <div>Nenhum produto encontrado</div>
   }
 
-  const allColumns = Object.keys(product.specifications || {})
+  const formattedSpecifications = product.specifications.reduce(
+    (acc, spec) => {
+      const fieldName = spec.specificationField.name
+      if (!acc[fieldName]) {
+        acc[fieldName] = []
+      }
 
-  console.log(allColumns)
+      acc[fieldName].push(spec.value)
+
+      return acc
+    },
+    {} as Record<string, string[]>,
+  )
+
+  const allColumns = Object.keys(formattedSpecifications || {})
 
   return (
     <table className="table-auto border-collapse overflow-hidden rounded-lg bg-white text-left shadow-md">
       <TableHeader columns={allColumns} />
       <tbody>
         <TableRow
-          specifications={product.specifications}
+          specifications={formattedSpecifications}
           columns={allColumns}
         />
       </tbody>

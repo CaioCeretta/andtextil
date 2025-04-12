@@ -1,26 +1,21 @@
 'use client'
 
 import CategoryCard from '@/components/Categorias/category-card'
-import useCategories from '@/data/hooks/useCategories'
-import useProducts from '@/data/hooks/useProducts'
-import { useCallback, useEffect } from 'react'
+import type { CategoryType, ProductType } from '@/shared/interfaces'
 
-export interface HomeCategoriesProps {}
+export interface HomeCategoriesProps {
+  categories: CategoryType[]
+  products: ProductType[]
+}
 
 export const HomeCategories = (props: HomeCategoriesProps) => {
-  const { getParentCategories, emptyCategorySelected } = useCategories()
-  const { products } = useProducts()
+  const { categories, products } = props
 
-  const parentCategories = getParentCategories()
+  const parentCategories = categories.filter((c) => c.parentId === null)
 
-  useEffect(() => emptyCategorySelected(), [emptyCategorySelected])
-
-  const getFirstProductByCategory = useCallback(
-    (categoryId: number) => {
-      return products.find((product) => categoryId === product.categoryId)
-    },
-    [products],
-  )
+  function getFirstProductByCategory(categoryId: number) {
+    return products.find((product) => categoryId === product.categoryId)
+  }
 
   return (
     <div className="mb-10 grid grid-cols-1 items-center justify-between gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">

@@ -1,57 +1,24 @@
 'use client'
 
-import type { ProductType } from '@/shared/interfaces'
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 
+import type { ProductType } from '@/shared/interfaces'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
-import useCategories from '@/data/hooks/useCategories'
-import useProducts from '@/data/hooks/useProducts'
-import type { Category } from '@prisma/client'
+import OrcamentoDialog from '../components/OrcamentoDialog'
 import ProductDescription from '../components/ProductDescription'
 import ProductTable from './Tabela/ProductTable'
-import OrcamentoDialog from '../components/OrcamentoDialog'
 
-const Produto: React.FC = () => {
-  const { categories } = useCategories()
-  const { products } = useProducts()
+interface ProdutoProps {
+  product: ProductType
+}
 
-  const { slug } = useParams<{
-    slug: string
-  }>()
-
-  const [product, setProduct] = useState<ProductType | null>()
-  const [categoryName, setCategoryName] = useState<string>('')
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      setIsLoading(true)
-
-      const productData = products.find(
-        (prod: ProductType) => prod.slug === slug,
-      )
-
-      if (productData) {
-        setProduct(productData)
-        const category = categories.find(
-          (cat: Category) => cat.id === productData.categoryId,
-        )
-        setCategoryName(category ? category.name : 'Categoria não encontrada')
-      }
-      setProduct(productData || null)
-      setIsLoading(false)
-    }
-
-    fetchProduct()
-  }, [slug, categories, products])
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+const Produto = ({ product }: ProdutoProps) => {
+  const [categoryName, setCategoryName] = useState<string>(
+    product.category.name,
+  )
 
   if (!product) {
-    return <div>Loading...</div>
+    return <div>Carregando Detalhes...</div>
   }
 
   return (

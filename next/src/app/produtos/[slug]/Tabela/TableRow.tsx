@@ -10,6 +10,9 @@ export default function TableRow({ columns, specifications }: TableRowProps) {
     ...columns.map((col) => specifications[col]?.length || 1),
   )
 
+  console.log(columns)
+  console.log(specifications)
+
   // Encontrar a especificação correspondente ao campo atual
   return (
     <>
