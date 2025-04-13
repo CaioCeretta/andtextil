@@ -1,6 +1,6 @@
 'use server'
 
-import { db } from '@/db'
+import { db } from '@/lib/prisma'
 
 export const getProducts = async () => {
   const products = await db.product.findMany({

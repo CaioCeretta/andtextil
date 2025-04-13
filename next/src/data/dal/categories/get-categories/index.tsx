@@ -1,4 +1,4 @@
-import { db } from '@/db'
+import { db } from '@/lib/prisma'
 
 export async function getCategories() {
   const categories = db.category.findMany()
