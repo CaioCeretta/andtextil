@@ -1,20 +1,32 @@
 'use server'
 
 import { db } from '@/lib/prisma'
+import { productIncludes } from '@/shared/types'
+
+// export const getProducts = async () => {
+//   const products = await db.product.findMany({
+//     include: {
+//       category: true,
+//       applications: true,
+//       characteristics: true,
+//       images: true,
+//       specifications: {
+//         include: {
+//           specificationField: true,
+//         },
+//       },
+//     },
+//   })
 
 export const getProducts = async () => {
   const products = await db.product.findMany({
-    include: {
-      category: true,
-      applications: true,
-      characteristics: true,
-      images: true,
-      specifications: {
-        include: {
-          specificationField: true,
-        },
-      },
-    },
+    include: productIncludes,
+  })
+}
+
+export const getFormattedProducts = async () => {
+  const products = await db.product.findMany({
+    include: productIncludes,
   })
 
   const formattedProducts = products.map((product) => ({

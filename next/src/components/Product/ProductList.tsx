@@ -1,15 +1,15 @@
-'use client'
-
-import useCategories from '@/data/hooks/useCategories'
-import useProducts from '@/data/hooks/useProducts'
-import ProductCard from './ProductCard'
+import { getCategories } from '@/data/dal/categories/get-categories'
 import Link from 'next/link'
+import ProductCard from './ProductCard'
+import { getProducts } from '@/data/dal/products/get-products'
 
 export interface ProductsListProps {}
 
-export const ProductsList = (props: ProductsListProps) => {
-  const { categories } = useCategories()
-  const { products } = useProducts()
+export const ProductsList = async (props: ProductsListProps) => {
+  const categories = await getCategories()
+  const products = await getProducts()
+
+  console.log(products)
 
   // Filter parent and child categories
   const parentCategories = categories.filter((category) => !category.parentId)

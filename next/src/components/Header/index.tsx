@@ -1,15 +1,14 @@
-'use client'
-
 import { db } from '@/lib/prisma'
 import Image from 'next/image'
 import Link from 'next/link'
 import ProductsNavDropdown from './DropdownProducts'
 import useCategories from '@/data/hooks/useCategories'
+import { getCategories } from '@/data/dal/categories/get-categories'
 
-const Header = () => {
-  const { getParentCategories } = useCategories()
+const Header = async () => {
+  const categories = await getCategories()
 
-  const parentCategories = getParentCategories()
+  const parentCategories = categories.filter((c) => c.parentId === null)
 
   return (
     <nav className="inset-x-0 top-0 mb-10 h-[75px] w-full border-b border-secondary-yellow bg-yellow-nav px-2 transition-all md:h-[85px] md:px-5 lg:h-[125px] lg:px-10">

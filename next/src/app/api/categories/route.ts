@@ -1,5 +1,5 @@
-import { db } from '@/db'
-import { getCategories } from '@/utils/fetchCategories'
+import { db } from '@/lib/prisma'
+import { getCategories } from '@/data/dal/categories/get-categories'
 
 export async function GET() {
   const categories = await getCategories()

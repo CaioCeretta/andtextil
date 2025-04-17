@@ -1,4 +1,4 @@
-import { db } from '@/db'
+import { db } from '@/lib/prisma'
 import Produto from './produto'
 import { productIncludes } from '@/shared/types'
 

@@ -1,4 +1,4 @@
-import { db } from '@/db'
+import { db } from '@/lib/prisma'
 import ProductsByCategory from './ProductsByCategory'
 import { capitalizeString } from '@/lib/utils'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'

@@ -1,24 +1,16 @@
-'use client'
-
 import CategoryCard from '@/components/Categorias/category-card'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductsList from '@/components/Product/ProductList'
-import useCategories from '@/data/hooks/useCategories'
-import useProducts from '@/data/hooks/useProducts'
-import { useCallback, useEffect } from 'react'
+import { getCategories } from '@/data/dal/categories/get-categories'
+import { getProducts } from '@/data/dal/products/get-products'
 
-export default function Categories() {
-  const { categories, emptyCategorySelected } = useCategories()
-  const { products } = useProducts()
+export default async function Categories() {
+  const { products } = await getProducts()
+  const { categories } = await getCategories()
 
-  useEffect(() => emptyCategorySelected(), [emptyCategorySelected])
-
-  const getFirstProductByCategory = useCallback(
-    (categoryId: number) => {
-      return products.find((product) => categoryId === product.categoryId)
-    },
-    [products],
-  )
+  const getFirstProductByCategory = (categoryId: number) => {
+    return products.find((product) => categoryId === product.categoryId)
+  }
 
   return (
     <section>

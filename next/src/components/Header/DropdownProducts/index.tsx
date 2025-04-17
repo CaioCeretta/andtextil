@@ -27,14 +27,21 @@ export default function ProductsNavDropdown({
   return (
     <div className={cn(`${className}`)}>
       <DropdownMenu>
-        <DropdownMenuTrigger>Produtos</DropdownMenuTrigger>
-        <DropdownMenuContent className="p-5q">
-          <DropdownMenuItem className="w-100 border-b-2 border-gray-300 py-4 text-justify">
-            <Link href="/categorias">Todos Produtos</Link>
+        <div className="flex items-center justify-center gap-x-2 text-sm lg:text-lg">
+          <DropdownMenuTrigger>Produtos</DropdownMenuTrigger>
+        </div>
+        <DropdownMenuContent className="space-y-2 bg-main-yellow p-2">
+          <DropdownMenuItem className="md:text-md rounded-none bg-main-yellow text-justify text-sm">
+            <Link
+              href="/categorias"
+              className="md:text-md m-0 p-0 text-sm font-semibold text-blue-text lg:text-lg"
+            >
+              Todos Produtos
+            </Link>
           </DropdownMenuItem>
           {categories.map((category) => (
             <DropdownMenuItem
-              className="w-100 border-b-2 border-gray-300 py-4 text-justify"
+              className="md:text-md md:text-md z-20 rounded-none bg-main-yellow text-justify text-sm font-semibold text-blue-text lg:text-lg"
               key={category.id}
             >
               <Link href={`/categorias/${category.name}`}>
