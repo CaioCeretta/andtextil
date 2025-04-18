@@ -5,7 +5,7 @@ import { getCategories } from '@/data/dal/categories/get-categories'
 import { getProducts } from '@/data/dal/products/get-products'
 
 export default async function Categories() {
-  const { products } = await getProducts()
+  const { getFormattedProducts } = await getProducts()
   const { categories } = await getCategories()
 
   const getFirstProductByCategory = (categoryId: number) => {

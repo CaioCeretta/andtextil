@@ -22,6 +22,8 @@ export const getProducts = async () => {
   const products = await db.product.findMany({
     include: productIncludes,
   })
+
+  return products
 }
 
 export const getFormattedProducts = async () => {
