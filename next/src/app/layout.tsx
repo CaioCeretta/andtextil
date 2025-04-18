@@ -3,8 +3,8 @@ import Header from '@/components/Header'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ProductsProvider } from '@/data/contexts/ProductsContext'
-import { CategoriesProvider } from '@/data/contexts/CategoriesContext'
+import { ProductsProvider } from '@/contexts/ProductsContext'
+import { CategoriesProvider } from '@/contexts/CategoriesContext'
 
 const inter = Inter({
   weight: ['400', '500', '700'],

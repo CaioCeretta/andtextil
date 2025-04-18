@@ -1,7 +1,7 @@
 'use client'
 
 import CategoryCard from '@/components/Categorias/category-card'
-import type { CategoryType, ProductType } from '@/shared/interfaces'
+import type { CategoryType, ProductType } from '@/shared/types'
 
 export interface HomeCategoriesProps {
   categories: CategoryType[]

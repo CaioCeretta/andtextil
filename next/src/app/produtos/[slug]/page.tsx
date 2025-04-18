@@ -1,6 +1,6 @@
 import { db } from '@/lib/prisma'
 import Produto from './produto'
-import { productIncludes } from '@/shared/types'
+import { productIncludes } from '@/shared/types/prisma-types'
 
 export interface PageProps {
   params: {

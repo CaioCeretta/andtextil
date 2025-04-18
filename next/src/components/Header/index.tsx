@@ -2,7 +2,6 @@ import { db } from '@/lib/prisma'
 import Image from 'next/image'
 import Link from 'next/link'
 import ProductsNavDropdown from './DropdownProducts'
-import useCategories from '@/data/hooks/useCategories'
 import { getCategories } from '@/data/dal/categories/get-categories'
 
 const Header = async () => {

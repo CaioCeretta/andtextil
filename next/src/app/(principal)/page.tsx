@@ -1,6 +1,6 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import HomeCategories from './home-categories'
-import type { CategoryType, ProductType } from '@/shared/interfaces'
+import type { CategoryType, ProductType } from '@/shared/types'
 
 async function getCategories(): Promise<CategoryType[]> {
   const res = await fetch(
