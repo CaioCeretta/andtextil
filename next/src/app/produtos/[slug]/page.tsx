@@ -1,6 +1,7 @@
 import { db } from '@/lib/prisma'
 import Produto from './produto'
 import { productIncludes } from '@/shared/types/prisma-types'
+import { notFound } from 'next/navigation'
 
 export interface PageProps {
   params: {
@@ -17,10 +18,10 @@ const Page = async ({ params }: PageProps) => {
   })
 
   if (!product) {
-    return <p className="text-center text-xl">Produto não encontrado</p>
+    notFound()
   }
 
-  return <>{product && <Produto product={product} />}</>
+  return <Produto product={product} />
 }
 
 export default Page

@@ -2,8 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import type { ProductType } from '@/shared/interfaces'
+import { ProductType } from '@/shared/types'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 type ProductsByCategoryProps = {
@@ -25,7 +26,7 @@ const ProductsByCategory = ({ products }: ProductsByCategoryProps) => {
                 <div className="flex flex-col items-center gap-4 p-4">
                   <div className="relative aspect-square min-h-72 w-full max-w-64 overflow-hidden rounded-xl">
                     <Image
-                      src={product.images?.[0]?.url ?? '/placeholder.jpeg'}
+                      src={productImage ?? '/placeholder.jpeg'}
                       alt={product.name}
                       style={{
                         objectPosition: '50% 25%',
@@ -44,14 +45,15 @@ const ProductsByCategory = ({ products }: ProductsByCategoryProps) => {
                     </p>
                   </div>
 
-                  <Button
-                    onClick={() => router.push(`/produtos/${product.slug}`)}
-                    size="sm"
-                    variant="default"
-                    className="cursor-pointer bg-secondary-yellow"
-                  >
-                    Ver mais
-                  </Button>
+                  <Link href={`/produtos/${product.slug}`}>
+                    <Button
+                      size="sm"
+                      variant="default"
+                      className="cursor-pointer bg-secondary-yellow"
+                    >
+                      Ver mais
+                    </Button>
+                  </Link>
                 </div>
               </Card>
             </div>

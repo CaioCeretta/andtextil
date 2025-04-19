@@ -2,7 +2,7 @@ import { db } from '@/lib/prisma'
 import ProductsByCategory from './ProductsByCategory'
 import { capitalizeString } from '@/lib/utils'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import { productIncludes } from '@/shared/types'
+import { productIncludes } from '@/shared/types/prisma-types'
 
 interface PageProps {
   params: {

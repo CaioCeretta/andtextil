@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import type { ProductType } from '@/shared/interfaces'
+import type { ProductType } from '@/shared/types'
 import Image from 'next/image'
 import OrcamentoDialog from '../components/OrcamentoDialog'
 import ProductDescription from '../components/ProductDescription'
