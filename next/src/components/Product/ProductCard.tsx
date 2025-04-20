@@ -1,6 +1,6 @@
 'use client'
 
-import type { ProductType } from '@/shared/interfaces'
+import type { ProductType } from '@/shared/types'
 import Image from 'next/image'
 import ButtonShadcn from '../ButtonShadcn2'
 import Link from 'next/link'
