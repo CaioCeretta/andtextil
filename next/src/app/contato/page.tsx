@@ -19,7 +19,7 @@ const contatoFormSchema = z.object({
 
 type ContatoFormInputs = z.infer<typeof contatoFormSchema>
 
-export const Contato = () => {
+export default function Contato() {
   const {
     handleSubmit,
     register,
@@ -108,5 +108,3 @@ export const Contato = () => {
     </MaxWidthWrapper>
   )
 }
-
-export default Contato
