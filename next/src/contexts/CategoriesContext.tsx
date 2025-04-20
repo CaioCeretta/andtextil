@@ -2,7 +2,8 @@
 
 import { createContext, useState, useEffect, useMemo } from 'react'
 
-import { CategoryType, CategoriesContextProps } from '../../shared/interfaces'
+import { CategoriesContextProps } from '@/shared/interfaces'
+import type { CategoryType } from '@/shared/types'
 
 // interface DataFormat {
 // 	categories: Category[]

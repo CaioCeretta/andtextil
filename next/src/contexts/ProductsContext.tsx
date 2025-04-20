@@ -1,6 +1,7 @@
 'use client'
 
-import type { ProductType, ProductsContextProps } from '@/shared/interfaces'
+import type { ProductsContextProps } from '@/shared/interfaces'
+import type { ProductType } from '@/shared/types'
 import { createContext, useEffect, useMemo, useState } from 'react'
 import useCategories from '../hooks/useCategories'
 
