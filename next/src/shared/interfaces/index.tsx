@@ -1,5 +1,5 @@
 import { Prisma } from '@prisma/client'
-import type { CategoryType, ProductType } from '../types'
+import { ProductType, CategoryType } from '../types'
 
 export interface CategoriesContextProps {
   categories: CategoryType[]
