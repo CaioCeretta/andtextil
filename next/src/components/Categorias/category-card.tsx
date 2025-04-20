@@ -2,7 +2,7 @@ import Link from 'next/link'
 import MaxWidthWrapper from '../MaxWidthWrapper'
 import type { Category, Product } from '@prisma/client'
 import Image from 'next/image'
-import type { CategoryType, ProductType } from '@/shared/interfaces'
+import type { CategoryType, ProductType } from '@/shared/types'
 import { Button } from '../ui/button'
 import { PlusIcon } from 'lucide-react'
 
