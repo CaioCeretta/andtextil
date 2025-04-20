@@ -1,5 +1,5 @@
 import { formatProductName } from '@/lib/utils'
-import type { ProductType } from '@/shared/interfaces'
+import type { ProductType } from '@/shared/types'
 import OrcamentoModal from '@/components/OrcamentoModal'
 import { Button } from '@/components/ui/button'
 import * as Dialog from '@/components/ui/dialog'

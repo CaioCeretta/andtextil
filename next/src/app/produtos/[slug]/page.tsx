@@ -24,4 +24,16 @@ const Page = async ({ params }: PageProps) => {
   return <Produto product={product} />
 }
 
+export async function generateStaticParams() {
+  const products = await db.product.findMany({
+    select: {
+      slug: true,
+    },
+  })
+
+  return products.map((product) => ({
+    slug: product.slug,
+  }))
+}
+
 export default Page

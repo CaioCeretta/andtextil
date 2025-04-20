@@ -1,13 +1,13 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import { ProductsProvider } from '@/contexts/ProductsContext'
 import { CategoriesProvider } from '@/contexts/CategoriesContext'
 
-const inter = Inter({
-  weight: ['400', '500', '700'],
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
 })
 
@@ -15,6 +15,22 @@ export const metadata: Metadata = {
   title: 'AND Textil',
   description: `Indústria especializada em tecidos, fitas, fios de aramida e fibra de vidro.
     Soluções de alta qualidade para aplicações industriais e técnicas.`,
+  keywords: [
+    'tecidos industriais',
+    'fitas de aramida',
+    'fios de aramida',
+    'fibra de vidro',
+    'materiais têxteis técnicos',
+    'tecidos resistentes',
+    'aramida',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  verification: {
+    google: 'CUnJHSrtNHV-f1ZpFo4eelcPmHIJo10rfRClL6WxCfk',
+  },
 }
 
 export default function RootLayout({
@@ -24,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${poppins.className}`}>
         <div className="flex min-h-screen flex-col">
           <ProductsProvider>
             <CategoriesProvider>

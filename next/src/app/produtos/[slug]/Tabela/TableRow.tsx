@@ -19,7 +19,10 @@ export default function TableRow({ columns, specifications }: TableRowProps) {
       {Array.from({ length: maxRows }).map((_, rowIndex) => (
         <tr key={rowIndex}>
           {columns.map((col, colIndex) => (
-            <td key={colIndex} className="border px-4 py-2">
+            <td
+              key={colIndex}
+              className="border-gay-300 md:text-md border px-1 py-2 md:px-3 md:py-3 md:text-xs lg:px-6 lg:py-4"
+            >
               {specifications[col]?.[rowIndex] || '-'}
             </td>
           ))}

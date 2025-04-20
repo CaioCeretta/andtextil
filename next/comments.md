@@ -241,3 +241,47 @@ DAL - Direct access to the db with prisma, without formatting logic
 DTO - Defines the shape of the data to be delivered (the output "contract")
 Service - Unites the data and transform them for the DTO using business rules
 shared/types.ts - Prisma raw types or utilitaries, without domain logic
+
+## generateStaticParams (responsible for generating static routes)
+
+export async function generateStaticParams() {
+const products = await db.product.findMany({
+select: {
+slug: true, // Somente os slugs dos produtos
+},
+})
+
+return products.map((product) => ({
+slug: product.slug, // Gera as rotas baseadas nos slugs dos produtos
+}))
+}
+
+I used this code in my [slug]/page.tsx
+
+Slug Fetching: What happens here, is basically that the generateStaticParams is executed at the moment of the static generation, Next calls
+his function to generate the products pages route
+
+- With prisma we are querying with findMany to obtain all the products slugs
+- `select` ensures that we are looking for only the slugs and not all the product data, which is more efficient.
+
+Slug Mapping: Next.js uses the slugs to generate the static pages. The function returns an array of objects with the slugs,
+which results in the generation of the static routes for each product based on its slug.
+
+1. The flow is basically:
+
+. Next.js calls the function generateStaticParams
+. From the slugs returned by this function, Next.js creates the static pages, such as /produto/[slug].
+
+2. When a user accesses a product page:
+   . Next.js calls the page function
+   . The parameter slug is used to fetch the product data from the database (with findFirst)
+   . If a product is found, it is passed to the Produto component to render the data
+   . Otherwise, Next.js redirects to the 404 page using notFound()
+
+Why does this works well with Next.js?
+
+. SSG: The static generation of products page with generateStaticParams ensures that all product pages are going to be
+rendered at the build moment, oferring high performance and SEO.
+. Dynamic Data: Even if it's a static page, Next.js is still able to bring product dynamic data with the fetch made on
+Page (during the request of acessing the product page). This is great for performance, since we have an initial SSG but it
+can load even more recent data during the rendering

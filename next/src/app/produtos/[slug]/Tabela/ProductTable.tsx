@@ -1,4 +1,4 @@
-import { ProductType } from '@/shared/interfaces'
+import { ProductType } from '@/shared/types'
 import TableHeader from './TableHeader'
 import TableRow from './TableRow'
 
@@ -26,6 +26,8 @@ export default function ProductTable({ product }: ProductProps) {
   )
 
   const allColumns = Object.keys(formattedSpecifications || {})
+
+  console.log(allColumns)
 
   return (
     <table className="table-auto border-collapse overflow-hidden rounded-lg bg-white text-left shadow-md">
