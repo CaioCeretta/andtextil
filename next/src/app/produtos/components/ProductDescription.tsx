@@ -1,5 +1,5 @@
 import { formatProductName } from '@/lib/utils'
-import type { ProductType } from '@/shared/interfaces'
+import type { ProductType } from '@/shared/types'
 
 interface ProductDescriptionProps {
   product: ProductType
