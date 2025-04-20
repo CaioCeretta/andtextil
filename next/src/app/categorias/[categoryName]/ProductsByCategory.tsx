@@ -2,7 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { ProductType } from '@/shared/types'
+import type { ProductType } from '@/shared/types'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
