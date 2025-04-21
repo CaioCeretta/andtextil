@@ -31,17 +31,14 @@ export async function generateStaticParams() {
     },
     where: {
       slug: {
-        not: '', // Apenas `slugs` válidos
-        // Poderia também ser: slug: { not: "" }, se quiser garantir que não seja vazio
+        not: '',
       },
     },
   })
 
-  return products
-    .filter((product) => product.slug !== null)
-    .map((product) => ({
-      slug: product.slug!,
-    }))
+  return products.map((product) => ({
+    slug: product.slug,
+  }))
 }
 
 export default Page

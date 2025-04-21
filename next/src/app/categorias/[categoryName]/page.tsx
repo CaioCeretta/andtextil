@@ -3,6 +3,25 @@ import ProductsByCategory from './ProductsByCategory'
 import { capitalizeString } from '@/lib/utils'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import { productIncludes } from '@/shared/types/prisma-types'
+import { notFound } from 'next/navigation'
+
+export async function generateStaticParams() {
+  const categories = await db.category.findMany({
+    select: {
+      name: true, // A propriedade `name` é o que você usará para o `categoryName`
+    },
+    where: {
+      name: {
+        not: '', // Filtra categorias com nome vazio
+      },
+    },
+  })
+
+  // Mapeia as categorias para os parâmetros que o Next.js espera
+  return categories.map((category) => ({
+    categoryName: category.name, // `categoryName` é o parâmetro da URL
+  }))
+}
 
 interface PageProps {
   params: {
@@ -32,7 +51,7 @@ const Page = async ({ params }: PageProps) => {
   })
 
   if (!category) {
-    throw new Error(`Categoria com nome ${categoryName} não foi encontrada`)
+    notFound()
   }
 
   const allProducts = [
