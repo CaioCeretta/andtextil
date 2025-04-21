@@ -1,25 +1,8 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import HomeCategories from './home-categories'
 import type { CategoryType, ProductType } from '@/shared/types'
-
-async function getCategories(): Promise<CategoryType[]> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`,
-    {
-      next: { revalidate: 60 },
-    },
-  )
-
-  return res.json()
-}
-
-async function getProducts(): Promise<ProductType[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products`, {
-    next: { revalidate: 60 },
-  })
-
-  return res.json()
-}
+import { getCategories } from '@/data/dal/categories/get-categories'
+import { getProducts } from '@/data/dal/products/get-products'
 
 export default async function Home() {
   const categories = await getCategories()
