@@ -34,7 +34,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/produtos/[slug]",
-    "src/app/produtos/components"
+    "src/app/produtos/components",
+    "src/app/not-found.js"
   ],
   "exclude": [
     "node_modules"
