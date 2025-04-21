@@ -7,7 +7,6 @@ import Image from 'next/image'
 import OrcamentoDialog from '../components/OrcamentoDialog'
 import ProductDescription from '../components/ProductDescription'
 import ProductTable from './Tabela/ProductTable'
-import { notFound } from 'next/navigation'
 
 interface ProdutoProps {
   product: ProductType
@@ -17,10 +16,6 @@ const Produto = ({ product }: ProdutoProps) => {
   const [categoryName, setCategoryName] = useState<string>(
     product.category.name,
   )
-
-  if (!product) {
-    notFound()
-  }
 
   return (
     <div className="mx-auto w-full pb-5 lg:max-w-full">

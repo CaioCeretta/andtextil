@@ -27,6 +27,7 @@ export async function generateStaticParams() {
     return [] // evita crash no build da Vercel
   }
 }
+
 interface PageProps {
   params: {
     categoryName: string
