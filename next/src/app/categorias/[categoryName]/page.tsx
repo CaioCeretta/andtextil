@@ -55,7 +55,7 @@ const Page = async ({ params }: PageProps) => {
   })
 
   if (!category) {
-    throw notFound()
+    notFound()
   }
 
   const allProducts = [

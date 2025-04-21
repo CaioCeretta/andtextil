@@ -18,7 +18,7 @@ const Page = async ({ params }: PageProps) => {
   })
 
   if (!product) {
-    throw notFound()
+    notFound()
   }
 
   return <Produto product={product} />
