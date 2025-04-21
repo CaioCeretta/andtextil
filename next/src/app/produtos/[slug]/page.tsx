@@ -1,3 +1,6 @@
+export const dynamicParams = true
+export const revalidate = 60
+
 import { db } from '@/lib/prisma'
 import Produto from './produto'
 import { productIncludes } from '@/shared/types/prisma-types'

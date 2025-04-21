@@ -1,3 +1,6 @@
+export const dynamicParams = true
+export const revalidate = 60
+
 import { db } from '@/lib/prisma'
 import ProductsByCategory from './ProductsByCategory'
 import { capitalizeString } from '@/lib/utils'
