@@ -7,6 +7,7 @@ import Image from 'next/image'
 import OrcamentoDialog from '../components/OrcamentoDialog'
 import ProductDescription from '../components/ProductDescription'
 import ProductTable from './Tabela/ProductTable'
+import { notFound } from 'next/navigation'
 
 interface ProdutoProps {
   product: ProductType
@@ -18,7 +19,7 @@ const Produto = ({ product }: ProdutoProps) => {
   )
 
   if (!product) {
-    throw new Error('Produto não encontrado')
+    notFound()
   }
 
   return (

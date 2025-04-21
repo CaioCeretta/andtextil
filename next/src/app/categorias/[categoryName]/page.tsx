@@ -55,7 +55,7 @@ const Page = async ({ params }: PageProps) => {
   })
 
   if (!category) {
-    throw new Error('Categoria não encontrada')
+    notFound()
   }
 
   const allProducts = [
