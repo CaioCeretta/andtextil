@@ -32,7 +32,7 @@ export const CategoriesProvider = (props: any) => {
   useEffect(() => {
     async function fetchCategories() {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`,
+        `${process.env.NEXT_PUBLIC_SITE_URL}api/categories`,
       )
 
       const data = await res.json()
