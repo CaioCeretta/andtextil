@@ -8,7 +8,6 @@ import type { CategoryType } from '@/shared/types'
 const initialCategoriesContext: CategoriesContextProps = {
   selectedCategory: null,
   emptyCategorySelected: () => {},
-  getParentCategories: () => [],
   selectCategory: () => {},
 }
 
@@ -17,22 +16,7 @@ export const CategoriesContext = createContext<CategoriesContextProps>(
 )
 
 export const CategoriesProvider = (props: any) => {
-  const [categories, setCategories] = useState<CategoryType[]>([])
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-
-    const fetchCategories = async () => {
-      const res = await fetch('/api/categories')
-
-      const data = await res.json()
-
-      setCategories(data)
-    }
-
-    fetchCategories()
-  }, [])
 
   function selectCategory(categoryId: number): void {
     return setSelectedCategory(categoryId)
@@ -42,17 +26,12 @@ export const CategoriesProvider = (props: any) => {
     setSelectedCategory(null)
   }
 
-  function getParentCategories() {
-    return categories.filter((category) => category.parentId == null)
-  }
-
   return (
     <CategoriesContext.Provider
       value={{
         selectedCategory,
         selectCategory,
         emptyCategorySelected,
-        getParentCategories,
       }}
     >
       {props.children}
