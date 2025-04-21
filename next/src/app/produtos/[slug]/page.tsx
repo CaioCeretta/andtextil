@@ -37,9 +37,11 @@ export async function generateStaticParams() {
     },
   })
 
-  return products.map((product) => ({
-    slug: product.slug, // Aqui, você confia que o valor de slug é sempre válido
-  }))
+  return products
+    .filter((product) => product.slug !== null)
+    .map((product) => ({
+      slug: product.slug!,
+    }))
 }
 
 export default Page
