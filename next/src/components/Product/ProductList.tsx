@@ -9,8 +9,6 @@ export const ProductsList = async (props: ProductsListProps) => {
   const categories = await getCategories()
   const products = await getProducts()
 
-  console.log(products)
-
   // Filter parent and child categories
   const parentCategories = categories.filter((category) => !category.parentId)
   const childCategories = categories.filter((category) => category.parentId)
