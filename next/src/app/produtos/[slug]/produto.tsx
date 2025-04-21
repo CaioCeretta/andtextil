@@ -18,7 +18,7 @@ const Produto = ({ product }: ProdutoProps) => {
   )
 
   return (
-    <div className="mx-auto w-full pb-5 lg:max-w-full">
+    <div className="mx-auto w-full pb-4 lg:max-w-full">
       <h1 className="my-4 hidden text-center text-2xl font-bold">
         {categoryName}
       </h1>
