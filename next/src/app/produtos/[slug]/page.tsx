@@ -25,20 +25,25 @@ const Page = async ({ params }: PageProps) => {
 }
 
 export async function generateStaticParams() {
-  const products = await db.product.findMany({
-    select: {
-      slug: true,
-    },
-    where: {
-      slug: {
-        not: '',
+  try {
+    const products = await db.product.findMany({
+      select: {
+        slug: true,
       },
-    },
-  })
+      where: {
+        slug: {
+          not: '',
+        },
+      },
+    })
 
-  return products.map((product) => ({
-    slug: product.slug,
-  }))
+    return products.map((product) => ({
+      slug: product.slug,
+    }))
+  } catch (error) {
+    console.error('Erro ao gerar static params:', error)
+    return [] // evita crash no build da Vercel
+  }
 }
 
 export default Page

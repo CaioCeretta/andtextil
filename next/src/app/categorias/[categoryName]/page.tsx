@@ -6,23 +6,27 @@ import { productIncludes } from '@/shared/types/prisma-types'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  const categories = await db.category.findMany({
-    select: {
-      name: true, // A propriedade `name` é o que você usará para o `categoryName`
-    },
-    where: {
-      name: {
-        not: '', // Filtra categorias com nome vazio
+  try {
+    const categories = await db.category.findMany({
+      select: {
+        name: true, // A propriedade `name` é o que você usará para o `categoryName`
       },
-    },
-  })
+      where: {
+        name: {
+          not: '', // Filtra categorias com nome vazio
+        },
+      },
+    })
 
-  // Mapeia as categorias para os parâmetros que o Next.js espera
-  return categories.map((category) => ({
-    categoryName: category.name, // `categoryName` é o parâmetro da URL
-  }))
+    // Mapeia as categorias para os parâmetros que o Next.js espera
+    return categories.map((category) => ({
+      categoryName: category.name, // `categoryName` é o parâmetro da URL
+    }))
+  } catch (error) {
+    console.error('Erro ao gerar static params de categorias:', error)
+    return [] // evita crash no build da Vercel
+  }
 }
-
 interface PageProps {
   params: {
     categoryName: string
