@@ -18,7 +18,7 @@ const Produto = ({ product }: ProdutoProps) => {
   )
 
   if (!product) {
-    return <div>Carregando Detalhes...</div>
+    throw new Error('Produto não encontrado')
   }
 
   return (
