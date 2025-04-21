@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState, useEffect, useMemo } from 'react'
+import { createContext, useState } from 'react'
 
 import { CategoriesContextProps } from '@/shared/interfaces'
 import type { CategoryType } from '@/shared/types'
