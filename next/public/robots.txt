@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://andtextil.com.br
+
+# Sitemaps
+Sitemap: https://andtextil.com.br/sitemap.xml

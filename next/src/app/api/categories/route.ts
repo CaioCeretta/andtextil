@@ -1,9 +1,15 @@
-import { getCategories } from '@/data/dal/categories/get-categories'
+import { db } from '@/lib/prisma'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const categories = await getCategories()
-
-  return new Response(JSON.stringify(categories), {
-    status: 200,
-  })
+  try {
+    const categories = await db.category.findMany()
+    return NextResponse.json(categories)
+  } catch (error) {
+    console.error('Erro ao buscar categorias:', error)
+    return NextResponse.json(
+      { error: 'Erro ao buscar categorias' },
+      { status: 500 },
+    )
+  }
 }
