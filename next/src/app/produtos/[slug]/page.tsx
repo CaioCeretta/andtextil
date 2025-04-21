@@ -29,6 +29,11 @@ export async function generateStaticParams() {
     select: {
       slug: true,
     },
+    where: {
+      slug: {
+        not: null as any,
+      },
+    },
   })
 
   return products.map((product) => ({
