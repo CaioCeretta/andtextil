@@ -35,45 +35,49 @@ interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { categoryName } = params
+  try {
+    const { categoryName } = params
 
-  const category = await db.category.findUnique({
-    where: {
-      name: categoryName,
-    },
-    include: {
-      products: {
-        include: productIncludes,
+    const category = await db.category.findUnique({
+      where: {
+        name: categoryName,
       },
-      children: {
-        include: {
-          products: {
-            include: productIncludes,
+      include: {
+        products: {
+          include: productIncludes,
+        },
+        children: {
+          include: {
+            products: {
+              include: productIncludes,
+            },
           },
         },
       },
-    },
-  })
+    })
 
-  if (!category) {
-    notFound()
+    if (!category) {
+      return notFound()
+    }
+
+    const allProducts = [
+      ...category.products,
+      ...category.children.flatMap((subcategory) => subcategory.products),
+    ]
+
+    return (
+      <MaxWidthWrapper className="mt-10">
+        <h1 className="mb-3 text-2xl font-semibold text-blue-text">
+          {capitalizeString(categoryName)}
+        </h1>
+        <div className="flex gap-5">
+          <ProductsByCategory products={allProducts} />
+        </div>
+      </MaxWidthWrapper>
+    )
+  } catch (error) {
+    console.error('Erro ao carregar a categoria:', error)
+    return notFound()
   }
-
-  const allProducts = [
-    ...category.products,
-    ...category.children.flatMap((subcategory) => subcategory.products),
-  ]
-
-  return (
-    <MaxWidthWrapper className="mt-10">
-      <h1 className="mb-3 text-2xl font-semibold text-blue-text">
-        {capitalizeString(categoryName)}
-      </h1>
-      <div className="flex gap-5">
-        <ProductsByCategory products={allProducts} />
-      </div>
-    </MaxWidthWrapper>
-  )
 }
-
 export default Page

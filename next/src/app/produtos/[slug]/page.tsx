@@ -32,18 +32,23 @@ export interface PageProps {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const { slug } = params
+  try {
+    const { slug } = params
 
-  const product = await db.product.findFirst({
-    where: { slug },
-    include: productIncludes,
-  })
+    const product = await db.product.findFirst({
+      where: { slug },
+      include: productIncludes,
+    })
 
-  if (!product) {
-    notFound()
+    if (!product) {
+      return notFound()
+    }
+
+    return <Produto product={product} />
+  } catch (error) {
+    console.error('Erro ao carregar produto:', error)
+    return notFound()
   }
-
-  return <Produto product={product} />
 }
 
 export default Page
