@@ -5,15 +5,6 @@ import { createContext, useState, useEffect, useMemo } from 'react'
 import { CategoriesContextProps } from '@/shared/interfaces'
 import type { CategoryType } from '@/shared/types'
 
-// interface DataFormat {
-// 	categories: Category[]
-// 	products: Product[]
-// }
-
-// const dataTyped: DataFormat = data as DataFormat
-
-// Criação dos contextos
-
 const initialCategoriesContext: CategoriesContextProps = {
   selectedCategory: null,
   emptyCategorySelected: () => {},
@@ -31,9 +22,7 @@ export const CategoriesProvider = (props: any) => {
 
   useEffect(() => {
     async function fetchCategories() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/categories`,
-      )
+      const res = await fetch('/api/categories')
 
       const data = await res.json()
 
