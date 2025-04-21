@@ -21,7 +21,7 @@ export const CategoriesProvider = (props: any) => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
 
   useEffect(() => {
-    async function fetchCategories() {
+    const fetchCategories = async () => {
       const res = await fetch('/api/categories')
 
       const data = await res.json()
