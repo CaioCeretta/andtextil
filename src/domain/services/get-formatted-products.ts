@@ -24,5 +24,7 @@ export const getFormattedProducts = async (): Promise<FormattedProduct[]> => {
     ),
   }))
 
+  console.log(formattedProducts)
+
   return formattedProducts
 }
