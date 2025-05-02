@@ -16,7 +16,7 @@ const Header = async () => {
           <Image src="/andtex-logo.png" fill alt="logo" />
         </Link>
 
-        <div className="flex h-full items-center gap-5 font-bold text-blue-text">
+        <div className="flex h-full items-center gap-5 font-medium text-blue-text">
           <ProductsNavDropdown categories={parentCategories} />
           <div className="flex items-center justify-center gap-x-2 text-sm lg:text-lg">
             <Link href="/contato">Contato</Link>

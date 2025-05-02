@@ -5,6 +5,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import { ProductsProvider } from '@/contexts/ProductsContext'
 import { CategoriesProvider } from '@/contexts/CategoriesContext'
+import WhatsappButton from '@/components/WhatsappButon'
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -47,6 +48,7 @@ export default function RootLayout({
               <Header />
               <main className="mx-10 flex-1">{children}</main>
               <Footer />
+              <WhatsappButton />
             </CategoriesProvider>
           </ProductsProvider>
         </div>
