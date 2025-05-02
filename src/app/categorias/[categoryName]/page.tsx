@@ -73,7 +73,7 @@ const Page = async ({ params }: PageProps) => {
         <h1 className="mb-3 text-2xl font-semibold text-blue-text">
           {capitalizeString(categoryName)}
         </h1>
-        <div className="flex gap-5">
+        <div className="grid grid-cols-1 gap-5 md:flex">
           <ProductsByCategory products={allProducts} />
         </div>
       </MaxWidthWrapper>

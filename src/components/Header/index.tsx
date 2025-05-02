@@ -10,7 +10,7 @@ const Header = async () => {
   const parentCategories = categories.filter((c) => c.parentId === null)
 
   return (
-    <nav className="inset-x-0 top-0 mb-10 h-[75px] w-full border-b border-secondary-yellow bg-yellow-nav px-2 transition-all md:h-[85px] md:px-5 lg:h-[125px] lg:px-10">
+    <nav className="inset-x-0 top-0 mb-10 h-[75px] w-full border-b border-secondary-yellow bg-yellow-nav transition-all md:h-[85px] md:px-5 lg:h-[125px] lg:px-10">
       <div className="flex h-[60px] items-center justify-between px-3 md:h-[80px] lg:h-[125px]">
         <Link className="relative h-20 w-28" href="/">
           <Image src="/andtex-logo.png" fill alt="logo" />
