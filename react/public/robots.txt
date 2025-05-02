@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://andtextil.com.br/sitemap.xml
