@@ -8,7 +8,7 @@ const nextConfig = {
 			},
 			{
 				protocol: `https`,
-				hostname: `www.andtextil.com.br`,
+				hostname: `andtextil.com.br`,
 				// permite qualquer caminho ou arquivo neste dominio
 				pathname: `/**`,
 			},
