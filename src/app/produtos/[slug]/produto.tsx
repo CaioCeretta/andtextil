@@ -1,21 +1,20 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-
-import type { ProductType } from '@/shared/types'
-import Image from 'next/image'
-import OrcamentoDialog from '../components/OrcamentoDialog'
-import ProductDescription from '../components/ProductDescription'
-import ProductTable from './Tabela/ProductTable'
+import Image from "next/image";
+import { useState } from "react";
+import type { ProductType } from "@/shared/types";
+import OrcamentoDialog from "../components/OrcamentoDialog";
+import ProductDescription from "../components/ProductDescription";
+import ProductTable from "./Tabela/ProductTable";
 
 interface ProdutoProps {
-  product: ProductType
+  product: ProductType;
 }
 
 const Produto = ({ product }: ProdutoProps) => {
   const [categoryName, setCategoryName] = useState<string>(
     product.category.name,
-  )
+  );
 
   return (
     <div className="mx-auto w-full pb-4 lg:max-w-full">
@@ -50,7 +49,7 @@ const Produto = ({ product }: ProdutoProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Produto
+export default Produto;
