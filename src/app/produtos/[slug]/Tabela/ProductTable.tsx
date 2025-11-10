@@ -30,7 +30,7 @@ export default function ProductTable({ product }: ProductProps) {
 
   return (
     <>
-      <table className="hidden table-auto border-collapse overflow-hidden rounded-lg bg-white text-left shadow-md md:table">
+      <table className="hidden table-auto border-collapse overflow-hidden rounded-lg bg-white text-left shadow-md lg:table">
         <TableHeader columns={allColumns} />
         <tbody>
           <TableRow
@@ -41,7 +41,7 @@ export default function ProductTable({ product }: ProductProps) {
       </table>
 
       {/* LISTA VERTICAL - Visível em <md */}
-      <div className="block space-y-4 md:hidden">
+      <div className="block space-y-4 lg:hidden">
         {allColumns.map((col) => (
           <div key={col} className="rounded-md border bg-white p-4 shadow">
             <div className="mb-2 text-sm font-semibold text-gray-700">
