@@ -1,32 +1,32 @@
-import { ProductType } from '@/shared/types'
-import TableHeader from './TableHeader'
-import TableRow from './TableRow'
-import COLUMN_LABELS from '@/utils/columnLabels'
+import type { ProductType } from "@/shared/types";
+import COLUMN_LABELS from "@/utils/columnLabels";
+import TableHeader from "./TableHeader";
+import TableRow from "./TableRow";
 
 interface ProductProps {
-  product: ProductType
+  product: ProductType;
 }
 
 export default function ProductTable({ product }: ProductProps) {
   if (!product) {
-    return <div>Nenhum produto encontrado</div>
+    return <div>Nenhum produto encontrado</div>;
   }
 
   const formattedSpecifications = product.specifications.reduce(
     (acc, spec) => {
-      const fieldName = spec.specificationField.name
+      const fieldName = spec.specificationField.name;
       if (!acc[fieldName]) {
-        acc[fieldName] = []
+        acc[fieldName] = [];
       }
 
-      acc[fieldName].push(spec.value)
+      acc[fieldName].push(spec.value);
 
-      return acc
+      return acc;
     },
     {} as Record<string, string[]>,
-  )
+  );
 
-  const allColumns = Object.keys(formattedSpecifications || {})
+  const allColumns = Object.keys(formattedSpecifications || {});
 
   return (
     <>
@@ -56,5 +56,5 @@ export default function ProductTable({ product }: ProductProps) {
         ))}
       </div>
     </>
-  )
+  );
 }
